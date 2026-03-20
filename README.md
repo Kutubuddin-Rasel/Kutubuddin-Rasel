@@ -1,4 +1,4 @@
-# Hi there, I'm Kutubuddin Juwel 👋
+# Hi there, I'm Kutubuddin Juwel
 
 **Software Engineer | Backend & System Architecture Enthusiast | Competitive Programmer**
 
