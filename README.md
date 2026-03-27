@@ -12,7 +12,7 @@
     <a href="https://www.linkedin.com/in/kutubuddin-juwel/">
       <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
     </a>
-    <a href="mailto:kutubuddinjuwel@gmail.com">
+    <a href="mailto:juwelkutubuddin@gmail.com">
       <img src="https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
     </a>
     <a href="https://codeforces.com/profile/Rk899">
@@ -20,7 +20,6 @@
     </a>
   </p>
 
-  <img src="https://komarev.com/ghpvc/?username=Kutubuddin-Rasel&label=Profile%20Views&color=0e75b6&style=flat" alt="Profile Views" />
 
 </div>
 
@@ -136,9 +135,11 @@ I'm a Computer Science graduate specializing in **scalable backend architecture*
 
   <br/><br/>
 
-  <!-- Stats: cache_seconds=86400 reduces rate-limiting; transparent theme avoids broken dark/light mismatches -->
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=Kutubuddin-Rasel&show_icons=true&theme=transparent&hide_border=true&title_color=00D4FF&icon_color=00D4FF&text_color=c9d1d9&count_private=true&include_all_commits=true&cache_seconds=86400" alt="GitHub Stats" />
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Kutubuddin-Rasel&layout=compact&theme=transparent&hide_border=true&title_color=00D4FF&text_color=c9d1d9&cache_seconds=86400&langs_count=8" alt="Top Languages" />
+  <!-- Stats & Top Languages via github-profile-summary-cards — independent backend, not rate-limited like github-readme-stats -->
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Kutubuddin-Rasel&theme=github_dark" alt="GitHub Stats" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Kutubuddin-Rasel&theme=github_dark" alt="Top Languages by Repo" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Kutubuddin-Rasel&theme=github_dark" alt="Top Languages by Commit" />
+  <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=Kutubuddin-Rasel&theme=github_dark&utcOffset=6" alt="Productive Time (UTC+6)" />
 
   <br/><br/>
 
@@ -171,7 +172,7 @@ I'm a Computer Science graduate specializing in **scalable backend architecture*
     <a href="https://www.linkedin.com/in/kutubuddin-juwel/">
       <img src="https://img.shields.io/badge/Connect_on_LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
     </a>
-    <a href="mailto:kutubuddinjuwel@gmail.com">
+    <a href="mailto:juwelkutubuddin@gmail.com">
       <img src="https://img.shields.io/badge/Send_an_Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" />
     </a>
     <a href="https://portfolio-three-omega-72.vercel.app/">
