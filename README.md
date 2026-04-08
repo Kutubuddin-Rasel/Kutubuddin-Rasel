@@ -1,185 +1,118 @@
 <div align="center">
 
-  <!-- Typing animation for personal brand -->
-  <a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=00D4FF&center=true&vCenter=true&multiline=true&repeat=false&width=650&height=100&lines=Hi+there%2C+I'm+Kutubuddin+Juwel+%F0%9F%91%8B;Backend+Engineer+%7C+Systems+Architect" alt="Typing SVG" /></a>
+# Kutubuddin Juwel
 
-  <h3>Backend & Distributed Systems Engineer · Competitive Programmer · Open Source Enthusiast</h3>
+**Backend Engineer · Distributed Systems · CS Graduate (CGPA 3.89/4.00)**
 
-  <p>
-    <a href="https://portfolio-three-omega-72.vercel.app/">
-      <img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Portfolio" />
-    </a>
-    <a href="https://www.linkedin.com/in/kutubuddin-juwel/">
-      <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
-    </a>
-    <a href="mailto:juwelkutubuddin@gmail.com">
-      <img src="https://img.shields.io/badge/Gmail-EA4335?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
-    </a>
-    <a href="https://codeforces.com/profile/Rk899">
-      <img src="https://img.shields.io/badge/Codeforces-Specialist_·_1448-1F8ACB?style=for-the-badge&logo=codeforces&logoColor=white" alt="Codeforces" />
-    </a>
-  </p>
-
+[Portfolio](https://portfolio-three-omega-72.vercel.app/) · [LinkedIn](https://www.linkedin.com/in/kutubuddin-juwel/) · [Email](mailto:juwelkutubuddin@gmail.com) · [Codeforces](https://codeforces.com/profile/Rk899)
 
 </div>
 
 ---
 
-## 👋 About Me
+## About
 
-I'm a Computer Science graduate specializing in **scalable backend architecture** and **distributed systems**. I design and build high-concurrency, fault-tolerant systems that prioritize correctness, performance, and financial-grade reliability.
+CS graduate from American International University-Bangladesh specializing in backend architecture, distributed systems, and financial-grade reliability engineering. I focus on systems where correctness is non-negotiable: transactional integrity, concurrency safety, and fault tolerance. I have built across the full backend surface — REST APIs, real-time WebSocket layers, mobile clients, and 2D game engines — but my deepest interest is in designing systems that stay correct under load and failure.
 
-- 🏗️ Currently building a **production-grade Mobile Financial Service (MFS)** engine with immutable double-entry bookkeeping, ACID-compliant transactions, and Redis-based idempotency
-- 📚 Actively learning **Go** for systems programming and **C#/.NET Core** to broaden distributed systems expertise
-- 🏆 Competitive programmer with **Codeforces Specialist** rating (1448) — sharpening algorithmic thinking daily
-- 🎯 Open to **backend, platform engineering, and distributed systems** roles at high-scale companies
+Currently seeking backend and software engineering roles where scale and correctness are taken seriously.
 
 ---
 
-## 🛠️ Technical Arsenal
+## Technical Skills
 
-<details>
-<summary><b>⚡ Languages</b></summary>
-<br/>
+**Proficient:** TypeScript, NestJS, PostgreSQL, Redis, Node.js, C, C++
 
-![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
-![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
-![Kotlin](https://img.shields.io/badge/Kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white)
-![Go](https://img.shields.io/badge/Go-00ADD8?style=for-the-badge&logo=go&logoColor=white)
-![PHP](https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=php&logoColor=white)
+**Working Knowledge:** Kotlin, Jetpack Compose, Next.js, MongoDB, Docker, Firebase, PHP
 
-</details>
-
-<details>
-<summary><b>🚀 Backend & Frameworks</b></summary>
-<br/>
-
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![NestJS](https://img.shields.io/badge/NestJS-E0234E?style=for-the-badge&logo=nestjs&logoColor=white)
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
-![REST API](https://img.shields.io/badge/REST_API-005571?style=for-the-badge&logo=fastapi&logoColor=white)
-![Socket.io](https://img.shields.io/badge/Socket.io-010101?style=for-the-badge&logo=socketdotio&logoColor=white)
-![WebSockets](https://img.shields.io/badge/WebSockets-010101?style=for-the-badge&logo=websocket&logoColor=white)
-
-</details>
-
-<details>
-<summary><b>🗄️ Databases & Infrastructure</b></summary>
-<br/>
-
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)
-![Redis](https://img.shields.io/badge/Redis-DC382D?style=for-the-badge&logo=redis&logoColor=white)
-![MongoDB](https://img.shields.io/badge/MongoDB-47A248?style=for-the-badge&logo=mongodb&logoColor=white)
-![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
-![Firebase](https://img.shields.io/badge/Firebase-FFCA28?style=for-the-badge&logo=firebase&logoColor=black)
-
-</details>
-
-<details>
-<summary><b>📱 Mobile & Tools</b></summary>
-<br/>
-
-![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
-![Jetpack Compose](https://img.shields.io/badge/Jetpack_Compose-4285F4?style=for-the-badge&logo=jetpackcompose&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![Linux](https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=linux&logoColor=black)
-
-</details>
+**Learning:** Go, C#/.NET Core
 
 ---
 
-## 🚀 Featured Engineering Projects
+## Projects
 
-### 🏦 Distributed Systems & Financial Architecture
+### Kori — Mobile Financial Service Engine
 
-| Project | Description | Stack |
-|---------|-------------|-------|
-| **[Kori](https://github.com/Kutubuddin-Rasel/kori)** | High-concurrency **Mobile Financial Service Engine**. Immutable double-entry bookkeeping ledger guaranteeing zero-sum money transfers. Custom Redis interceptor prevents double-spending through distributed idempotency keys. ACID-compliant transaction isolation prevents phantom reads under high load. | `NestJS` `PostgreSQL` `Redis` `Argon2` |
+`NestJS` `PostgreSQL` `Redis` `Argon2` `TypeScript`
 
----
+A production-grade financial backend engineered around strict correctness guarantees. The design prioritizes preventing money creation, double-spending, and race conditions at the architecture level — not at the application level.
 
-### ⚡ Real-Time & Collaboration Platforms
+**Core design decisions:**
 
-| Project | Description | Stack |
-|---------|-------------|-------|
-| **[Zenith](https://github.com/Kutubuddin-Rasel/zenith)** | Jira-style **agile project management platform**. Real-time Scrum board collaboration with live WebSocket push notifications. Role-based access control with granular visibility scoping per workspace. | `NestJS` `Next.js` `Socket.io` `Redis` `PostgreSQL` |
-| **[Blip](https://github.com/Kutubuddin-Rasel/blip)** | Scalable **real-time chat application** with hybrid JWT + session auth. Cursor-based pagination for infinite scrolling and optimistic UI updates for perceived zero-latency. | `NestJS` `Next.js` `Socket.io` `Redis` `PostgreSQL` |
+- **Immutable double-entry ledger** — every transfer posts two offsetting journal entries, making money creation or silent loss a mathematical impossibility
+- **Pessimistic locking** (`SELECT ... FOR NO KEY UPDATE`) on account rows during transfers, eliminating lost-update anomalies under high concurrency
+- **ACID-compliant transaction isolation** — core transfer logic is wrapped in serialized database transactions to prevent phantom reads and dirty reads
+- **Distributed idempotency layer** via Redis — every transfer request is keyed to a client-supplied idempotency token, making retried or duplicate network requests safe at the infrastructure level
+- **Multi-typology transaction routing** — a single transaction engine handles Send Money, Cash-In, Cash-Out, and Merchant Payments, with fee amounts dynamically computed and routed to a dedicated system revenue wallet
+- **Multi-factor identity layer** — device-binding tied to cryptographic Argon2 hashing, making credential replay attacks across devices non-viable
 
----
-
-### 📱 Mobile & Cross-Platform
-
-| Project | Description | Stack |
-|---------|-------------|-------|
-| **[Conversa](https://github.com/Kutubuddin-Rasel/conversa)** | Real-time **Android messaging app** with instant message delivery, chat previews, and comprehensive profile management. Clean MVVM architecture with reactive state management. | `Kotlin` `Jetpack Compose` `Firebase` `MVVM` |
-| **[Health Care Service](https://github.com/Kutubuddin-Rasel/healthcare)** | Multi-role **healthcare web platform** with role-scoped dashboards for doctors, pharmacists, and patients. Prescription lifecycle management with audit trails. | `PHP` `JavaScript` `HTML` `CSS` |
+[View Repository](https://github.com/Kutubuddin-Rasel/kori) — *Core engine operational. Active development.*
 
 ---
 
-### 🎮 Systems & Graphics Programming
+### Zenith — Agile Project Management Platform
 
-| Project | Description | Stack |
-|---------|-------------|-------|
-| **[Super Mario](https://github.com/Kutubuddin-Rasel/super-mario)** | 2D platformer using an OOP-designed modular entity system. Characters, obstacles, and physics implemented as composable class hierarchies. | `C++` `OpenGL` `GLUT` |
+`NestJS` `Next.js` `Socket.io` `Redis` `PostgreSQL` `TypeScript`
 
----
+A Jira-scale project management platform built for real engineering teams. Designed with a five-tier RBAC model (Super-Admin, Project Lead, Developer, QA, Viewer) where each role has granular, independently scoped permissions per workspace. Real-time collaboration on Kanban and Scrum boards is delivered via persistent WebSocket connections with Redis-backed pub/sub for horizontal scaling.
 
-## 📊 GitHub Analytics
+Features: sprint planning, backlog management, issue tracking, live notifications, and full team management. Authentication via JWT with refresh token rotation.
 
-<div align="center">
-
-  <!-- GitHub Streak — streak-stats.demolab.com is more stable than vercel-hosted stats -->
-  <img src="https://streak-stats.demolab.com?user=Kutubuddin-Rasel&theme=transparent&hide_border=true&ring=00D4FF&fire=00D4FF&currStreakLabel=00D4FF" alt="GitHub Streak" />
-
-  <br/><br/>
-
-  <!-- Stats & Top Languages via github-profile-summary-cards — independent backend, not rate-limited like github-readme-stats -->
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Kutubuddin-Rasel&theme=github_dark" alt="GitHub Stats" />
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Kutubuddin-Rasel&theme=github_dark" alt="Top Languages by Repo" />
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Kutubuddin-Rasel&theme=github_dark" alt="Top Languages by Commit" />
-  <img src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=Kutubuddin-Rasel&theme=github_dark&utcOffset=6" alt="Productive Time (UTC+6)" />
-
-  <br/><br/>
-
-  <!-- Activity Graph -->
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=Kutubuddin-Rasel&theme=react-dark&hide_border=true&color=00D4FF&line=00D4FF&point=ffffff" alt="Contribution Graph" />
-
-</div>
+[View Repository](https://github.com/Kutubuddin-Rasel/zenith) — *Active development.*
 
 ---
 
-## 🏆 Competitive Programming
+### Blip — Real-Time Chat Application
 
-<div align="center">
+`NestJS` `Next.js` `Socket.io` `Redis` `PostgreSQL` `Firebase` `TypeScript`
 
-| Platform | Handle | Rating | Rank |
-|----------|--------|--------|------|
-| **Codeforces** | [Rk899](https://codeforces.com/profile/Rk899) | 1448 | 🟦 Specialist |
+A scalable chat system built to understand the full surface of real-time backend design. Key architectural choices: hybrid authentication combining Firebase SMS verification with custom-issued JWTs; cursor-based pagination for message history (avoiding offset pagination's consistency problems at scale); optimistic UI updates for perceived zero-latency; and WebSocket connection state managed through Redis for multi-instance compatibility.
 
-*Focused on graph algorithms, dynamic programming, and number theory.*
-
-</div>
+[View Repository](https://github.com/Kutubuddin-Rasel/blip)
 
 ---
 
-<div align="center">
+### Conversa — Android Messaging App
 
-### 💬 Let's build something remarkable together.
+`Kotlin` `Jetpack Compose` `Firebase` `MVVM`
 
-  <p>
-    <a href="https://www.linkedin.com/in/kutubuddin-juwel/">
-      <img src="https://img.shields.io/badge/Connect_on_LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" />
-    </a>
-    <a href="mailto:juwelkutubuddin@gmail.com">
-      <img src="https://img.shields.io/badge/Send_an_Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white" />
-    </a>
-    <a href="https://portfolio-three-omega-72.vercel.app/">
-      <img src="https://img.shields.io/badge/View_Portfolio-000000?style=for-the-badge&logo=vercel&logoColor=white" />
-    </a>
-  </p>
+Native Android messaging client built to learn production-grade Android architecture. Clean MVVM separation with reactive state management, real-time message delivery, conversation history, and profile management. Firebase handles auth and message persistence.
 
-  <sub>⚡ <i>"Correctness first. Performance always. Complexity only when justified."</i></sub>
+[View Repository](https://github.com/Kutubuddin-Rasel/conversa)
 
-</div>
+---
+
+### Super Mario — 2D Platformer
+
+`C++` `OpenGL` `GLUT`
+
+A 2D platformer built in C++ with OpenGL to explore systems-level graphics programming. The entity system is fully OOP-designed: characters, obstacles, coins, and physics are implemented as composable class hierarchies. Includes collision detection, dynamic camera tracking, a scoring system, and a lives indicator.
+
+[View Repository](https://github.com/Kutubuddin-Rasel/super-mario)
+
+---
+
+## Experience
+
+**Full Stack Developer Intern — Techmak Technology** *(July 2025 – October 2025)*
+
+Built DhakaVoice, a civic engagement web platform, as the sole developer on the project. Responsibilities spanned the full backend: database schema design, 15+ REST API endpoints with JWT authentication and Argon2 password hashing, WebSocket-based real-time communication, and Prisma ORM integration for type-safe database access. Frontend work included server/client component architecture in Next.js and bundle optimization via code splitting and lazy loading.
+
+---
+
+## Education
+
+**BSc in Computer Science** — American International University-Bangladesh
+
+CGPA: 3.89 / 4.00 · Graduated December 2025
+
+Dean's Award for Academic Excellence · Science Poster Contest Award (Fall 2022–23)
+
+Relevant coursework: Algorithms & Data Structures, Operating Systems, Computer Networks, Database Systems
+
+---
+
+## Competitive Programming
+
+**Codeforces:** [Rk899](https://codeforces.com/profile/Rk899) — Specialist · 193 problems solved
+
+Currently working through the NeetCode 150 problem set on LeetCode, focused on closing gaps in graph algorithms and dynamic programming.
