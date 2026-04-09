@@ -136,7 +136,7 @@ Native Android messaging client built to develop production-grade Android archit
 
 A 2D platformer built to explore systems-level graphics programming and OOP design at the entity level. Characters, obstacles, coins, and the physics engine are independent, composable class hierarchies. Includes collision detection, dynamic camera tracking, scoring, and a lives system.
 
-[View Repository](https://github.com/Kutubuddin-Rasel/super-mario)
+[View Repository](https://github.com/Kutubuddin-Rasel/SuperMario)
 
 ---
 
