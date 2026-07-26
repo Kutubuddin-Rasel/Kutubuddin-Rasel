@@ -1,10 +1,14 @@
 <div align="center">
 
-# Kutubuddin Juwel
+# Hi, I'm Kutubuddin Juwel 
 
-Backend Engineer · Distributed Systems · Financial-Grade Reliability
+**Backend Engineer · Distributed Systems**
 
-[Portfolio](https://portfolio-three-omega-72.vercel.app/) &nbsp;·&nbsp; [LinkedIn](https://www.linkedin.com/in/kutubuddin-juwel/) &nbsp;·&nbsp; [Email](mailto:juwelkutubuddin@gmail.com)
+<a href="https://portfolio-three-omega-72.vercel.app/"><img src="https://img.shields.io/badge/Portfolio-2F2F2F?style=flat-square" /></a>
+<a href="https://www.linkedin.com/in/kutubuddin-juwel/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" /></a>
+<a href="mailto:juwelkutubuddin@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white" /></a>
+
+<sub>Open to backend & distributed-systems roles</sub>
 
 </div>
 
@@ -12,162 +16,49 @@ Backend Engineer · Distributed Systems · Financial-Grade Reliability
 
 ## About
 
-CS graduate specializing in backend architecture and distributed systems. I am drawn to problems where the cost of incorrectness is high — financial transactions, concurrent state, and real-time consistency. My recent work spans a financial service engine built around double-entry bookkeeping and pessimistic concurrency control, a real-time collaboration platform with Redis-backed WebSocket scaling, and a chat system architected around cursor-based pagination and optimistic UI. I think carefully about failure modes before writing the first line of code.
-
-Actively seeking backend and software engineering roles.
+I build systems where incorrectness is expensive — financial transactions, concurrent state, real-time consistency. Most of my work lives at the intersection of database-level concurrency control, idempotency, and distributed messaging.
 
 ---
 
 ## Projects
 
-### Kori — Mobile Financial Service Engine
+**[Kori](https://github.com/Kutubuddin-Rasel/Kori)** — Mobile financial engine enforcing zero-sum double-entry bookkeeping with pessimistic row-level locking and a two-phase Redis idempotency layer, so incorrect balance state is structurally impossible rather than just logically avoided.
+`NestJS` `PostgreSQL` `Redis` `Prisma` `Argon2`
 
-`NestJS` `PostgreSQL` `Redis` `Argon2` `TypeScript`
+**[zenith](https://github.com/Kutubuddin-Rasel/zenith)** — Jira-scale project management platform with workspace-scoped RBAC via a join-table permission model, and a Redis pub/sub event bus enabling horizontal WebSocket scaling without sticky sessions.
+`NestJS` `Next.js` `Socket.io` `Redis` `PostgreSQL`
 
-A production-grade financial backend where every architectural decision is driven by one constraint: money must never be created, lost, or duplicated under any concurrency or network failure scenario.
+**[blip](https://github.com/Kutubuddin-Rasel/blip)** — Real-time chat backend built on cursor-based pagination instead of offset pagination, avoiding the O(k) scan cost and consistency bugs offset queries produce under concurrent inserts.
+`NestJS` `Next.js` `Socket.io` `Firebase`
 
-**Why pessimistic locking over optimistic locking:**
-In a financial system, concurrent transfers from the same account are not a rare edge case — they are expected traffic. Optimistic locking assumes conflicts are infrequent and resolves them at commit time with a rollback and retry. Under high concurrency on hot accounts, this produces a thundering herd of retries, compounding the very contention it is trying to resolve. Pessimistic locking (`SELECT ... FOR NO KEY UPDATE`) serializes access to account rows at the database level, paying the cost of a short wait once rather than the cost of repeated rollbacks. Correctness is guaranteed without application-level retry logic.
+**[pulseNews](https://github.com/Kutubuddin-Rasel/pulseNews)** — AI-personalized Android news reader with a 12-endpoint REST integration and an on-device NLP fallback (custom TextRank summarizer) for when the server AI-summary endpoint is rate-limited; AI-assisted development itself is kept in check by an enforced architecture ruleset and an automated permission-baseline check.
+`Kotlin` `Retrofit` `WorkManager`
 
-**Why double-entry bookkeeping over a simple debit/credit model:**
-A single-entry model has no internal consistency check — a bug that debits without crediting produces silent data corruption detectable only by manual audit. A double-entry ledger requires every transfer to post two offsetting immutable journal entries. The sum of all entries in the system must mathematically equal zero at all times. Corruption becomes immediately detectable. The ledger is also append-only: no balance is ever overwritten, only derived from entry history.
-
-**Transaction flow:**
-
-```
-Client Request (with x-idempotency-key)
-      │
-      ▼
-[Interceptor] Redis Idempotency Check
-  ├── State: PROCESSING? ───────────────► Throw 409 Conflict (Prevent race conditions)
-  ├── State: EXISTS? (Cache Hit) ───────► Return cached JSON response (No DB hit)
-  └── State: NEW REQUEST?
-      │
-      ▼
-Set Redis State ──► 'PROCESSING' (30s TTL Lock)
-      │
-      ▼
-[Prisma $transaction] BEGIN
-  │
-  ├── 1. Sort Wallet IDs Alphabetically      ← Prevents PostgeSQL deadlocks at scale
-  ├── 2. SELECT rows FOR NO KEY UPDATE       ← Acquire Pessimistic Row-Level Locks
-  ├── 3. Re-fetch fresh balances             ← Ensure math is based on locked state
-  ├── 4. Validate sufficient funds
-  │
-  ├── 5. Insert `Transaction` Record         ← DB Unique Constraint checks 'idempotencyKey' (Fail-safe)
-  │
-  ├── 6. Update Sender Wallet Balance        (Combined Transfer + Fee)
-  ├── 7. Insert `LedgerEntry`: DEBIT         (Source wallet: Total Amount)
-  │
-  ├── 8. Update Receiver Wallet Balance
-  ├── 9. Insert `LedgerEntry`: CREDIT        (Destination wallet: Transfer Amount)
-  │
-  ├── 10. Update System Wallet Balance       [If Fee > 0]
-  └── 11. Insert `LedgerEntry`: CREDIT       [If Fee > 0] (System Revenue wallet: Fee Amount)
-      │
-COMMIT (DB Locks released automatically)
-      │
-      ▼
-[Interceptor] On Success
-      │
-      ▼
-Cache exact HTTP JSON response in Redis (24h TTL)
-      │
-      ▼
-Return Response to Client
-```
-
-**Why Redis for idempotency rather than a database unique constraint:**
-A database constraint on the idempotency key would work, but it hits the database on every request including duplicates. Redis gives O(1) in-memory lookup, so duplicate requests are rejected before any database connection is acquired or any lock is contested. Under retry storms from a failed client, this protects the database entirely.
-
-**Additional design decisions:**
-- Multi-factor identity layer with device-binding — a stolen credential from one device is non-transferable
-- Argon2id for password hashing — resistant to both GPU brute-force and side-channel attacks
-- Multi-typology transaction router — Send Money, Cash-In, Cash-Out, and Merchant Payments share one engine with typology-specific fee computation
-
-[View Repository](https://github.com/Kutubuddin-Rasel/kori) — *Core engine operational. Active development.*
+<sub>Architecture decisions and design-tradeoff writeups live in each repo's own README.</sub>
 
 ---
 
-### Zenith — Agile Project Management Platform
+## Skills
 
-`NestJS` `Next.js` `Socket.io` `Redis` `PostgreSQL` `TypeScript`
+![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
+![NestJS](https://img.shields.io/badge/-NestJS-E0234E?style=flat-square&logo=nestjs&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![Redis](https://img.shields.io/badge/-Redis-DC382D?style=flat-square&logo=redis&logoColor=white)
+![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
+![Next.js](https://img.shields.io/badge/-Next.js-000000?style=flat-square&logo=next.js&logoColor=white)
+![Kotlin](https://img.shields.io/badge/-Kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white)
+![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
 
-A Jira-scale project management platform built for real engineering teams. The two hardest design problems were access control granularity and WebSocket scaling.
-
-**Access control:** Five-tier RBAC (Super-Admin, Project Lead, Developer, QA, Viewer) where permissions are scoped per workspace, not globally. A user can be a Project Lead in one workspace and a Viewer in another. This required a join-table permission model rather than a role column on the user record — user-level roles cannot express workspace-scoped visibility without leaking data across project boundaries.
-
-**WebSocket scaling:** Node.js WebSocket connections are instance-local. Without a shared message bus, a notification triggered on instance A cannot reach a client connected to instance B. Redis pub/sub creates a shared event bus across all instances — when an event is published on any instance, Redis fans it out and each instance delivers it to its locally connected clients. This allows horizontal scaling without sticky sessions.
-
-[View Repository](https://github.com/Kutubuddin-Rasel/zenith) — *Active development.*
-
----
-
-### Blip — Real-Time Chat Application
-
-`NestJS` `Next.js` `Socket.io` `Redis` `PostgreSQL` `Firebase` `TypeScript`
-
-Built to understand the full engineering surface of real-time backend design. The decision that required the most thought was pagination strategy.
-
-**Why cursor-based pagination over offset pagination:**
-`LIMIT n OFFSET k` requires the database to scan and discard the first `k` rows on every page request — O(k) work that grows with scroll depth. More critically, if a new message is inserted while a user is scrolling, every subsequent page shifts by one row, producing either a duplicate or a skipped message. Cursor-based pagination uses the last-seen message ID as a stable pointer: `WHERE id < :cursor ORDER BY id DESC LIMIT n`. The result set is stable regardless of concurrent inserts, and the query uses the primary key index — O(log n) regardless of history depth.
-
-**Additional design decisions:**
-- Hybrid authentication: Firebase SMS verification for identity, custom JWT for session control — leverages Firebase's verified phone number infrastructure without ceding session ownership
-- Optimistic UI updates: messages render immediately on send and reconcile with server confirmation asynchronously, eliminating perceived round-trip latency
-
-[View Repository](https://github.com/Kutubuddin-Rasel/blip)
+<sub>Currently learning: Go, C#/.NET Core</sub>
 
 ---
 
-### Conversa — Android Messaging App
+## Background
 
-`Kotlin` `Jetpack Compose` `Firebase` `MVVM`
-
-Native Android messaging client built to develop production-grade Android architecture instincts. Clean MVVM separation with reactive state management via StateFlow, real-time message delivery, full conversation history, and profile management.
-
-[View Repository](https://github.com/Kutubuddin-Rasel/conversa)
+BSc in Computer Science, American International University-Bangladesh (2025) &nbsp;·&nbsp; Android Developer @ Kitalon Labs (2026–Present) &nbsp;·&nbsp; previously Full Stack Developer Intern @ Techmak Technology (2025) &nbsp;·&nbsp; Codeforces Specialist, 1448 rating ([Rk899](https://codeforces.com/profile/Rk899))
 
 ---
 
-### Super Mario — 2D Platformer
-
-`C++` `OpenGL` `GLUT`
-
-A 2D platformer built to explore systems-level graphics programming and OOP design at the entity level. Characters, obstacles, coins, and the physics engine are independent, composable class hierarchies. Includes collision detection, dynamic camera tracking, scoring, and a lives system.
-
-[View Repository](https://github.com/Kutubuddin-Rasel/SuperMario)
-
----
-
-## Experience
-
-**Full Stack Developer Intern — Techmak Technology** *(July 2025 – October 2025)*
-
-Sole developer on DhakaVoice, a civic engagement web platform. Designed the database schema from scratch, implemented the full REST API layer (15+ endpoints) with JWT authentication and Argon2 password hashing, built the WebSocket real-time communication system, and integrated Prisma ORM for type-safe database access. Frontend work included Next.js server/client component architecture and bundle optimization via code splitting and lazy loading.
-
----
-
-## Technical Skills
-
-**Proficient:** TypeScript, NestJS, PostgreSQL, Redis, Node.js, C, C++
-
-**Working Knowledge:** Kotlin, Jetpack Compose, Next.js, MongoDB, Docker, Firebase, PHP
-
-**Learning:** Go, C#/.NET Core
-
----
-
-## Education
-
-**BSc in Computer Science** — American International University-Bangladesh · Graduated December 2025
-
-Relevant coursework: Algorithms & Data Structures, Operating Systems, Computer Networks, Database Systems
-
----
-
-## Competitive Programming
-
-**Codeforces:** [Rk899](https://codeforces.com/profile/Rk899) — 193 problems solved
-
-Currently working through the NeetCode 150 on LeetCode, focused on graph algorithms and dynamic programming.
+<div align="center">
+<img src="https://github-readme-stats.vercel.app/api?username=Kutubuddin-Rasel&show_icons=true&theme=default&hide_border=true&count_private=true" height="150" alt="GitHub stats" />
+</div>
