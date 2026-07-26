@@ -57,8 +57,3 @@ I build systems where incorrectness is expensive — financial transactions, con
 
 BSc in Computer Science, American International University-Bangladesh (2025) &nbsp;·&nbsp; Android Developer @ Kitalon Labs (2026–Present) &nbsp;·&nbsp; previously Full Stack Developer Intern @ Techmak Technology (2025) &nbsp;·&nbsp; Codeforces Specialist, 1448 rating ([Rk899](https://codeforces.com/profile/Rk899))
 
----
-
-<div align="center">
-<img src="https://github-readme-stats.vercel.app/api?username=Kutubuddin-Rasel&show_icons=true&theme=default&hide_border=true&count_private=true" height="150" alt="GitHub stats" />
-</div>
