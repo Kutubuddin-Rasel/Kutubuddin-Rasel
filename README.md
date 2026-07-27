@@ -1,59 +1,78 @@
-<div align="center">
+# Kutubuddin Rasel
 
-# Hi, I'm Kutubuddin Juwel 
+Backend engineer. I care about what happens when two requests hit the same row at the same time — locking, idempotency, and ledgers that can't go out of balance.
 
-**Backend Engineer · Distributed Systems**
+Currently building Android at Kitalon Labs · writing backend systems everywhere else · looking for backend SWE roles.
 
-<a href="https://portfolio-three-omega-72.vercel.app/"><img src="https://img.shields.io/badge/Portfolio-2F2F2F?style=flat-square" /></a>
-<a href="https://www.linkedin.com/in/kutubuddin-juwel/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" /></a>
-<a href="mailto:juwelkutubuddin@gmail.com"><img src="https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white" /></a>
-
-<sub>Open to backend & distributed-systems roles</sub>
-
-</div>
+[Email](mailto:juwelkutubuddin@gmail.com) · [LinkedIn](https://www.linkedin.com/in/kutubuddin-juwel/) · [GitHub](https://github.com/Kutubuddin-Rasel)
 
 ---
 
-## About
+## Stack
 
-I build systems where incorrectness is expensive — financial transactions, concurrent state, real-time consistency. Most of my work lives at the intersection of database-level concurrency control, idempotency, and distributed messaging.
+| Area | Tools |
+|---|---|
+| Languages | TypeScript, Kotlin, C++ |
+| Backend | NestJS, Prisma, TypeORM |
+| Data | PostgreSQL, Redis |
+| Currently learning | AWS — deploying Kori there next |
 
 ---
 
 ## Projects
 
-**[Kori](https://github.com/Kutubuddin-Rasel/Kori)** — Mobile financial engine enforcing zero-sum double-entry bookkeeping with pessimistic row-level locking and a two-phase Redis idempotency layer, so incorrect balance state is structurally impossible rather than just logically avoided.
-`NestJS` `PostgreSQL` `Redis` `Prisma` `Argon2`
+### [Kori](https://github.com/Kutubuddin-Rasel/Kori) — Mobile Financial Service backend
+`NestJS` `PostgreSQL` `Prisma` `Redis`
 
-**[zenith](https://github.com/Kutubuddin-Rasel/zenith)** — Jira-scale project management platform with workspace-scoped RBAC via a join-table permission model, and a Redis pub/sub event bus enabling horizontal WebSocket scaling without sticky sessions.
-`NestJS` `Next.js` `Socket.io` `Redis` `PostgreSQL`
+A from-scratch MFS backend (bKash/Nagad-style) built around one constraint: never corrupt a balance under concurrent load.
 
-**[blip](https://github.com/Kutubuddin-Rasel/blip)** — Real-time chat backend built on cursor-based pagination instead of offset pagination, avoiding the O(k) scan cost and consistency bugs offset queries produce under concurrent inserts.
-`NestJS` `Next.js` `Socket.io` `Firebase`
+- **Double-entry ledger** — every transaction writes paired DEBIT/CREDIT rows atomically inside one DB transaction; funds are moved, never created or destroyed.
+- **Deadlock-safe transfers** — wallet UUIDs are sorted before acquiring `FOR NO KEY UPDATE` pessimistic locks inside a Prisma transaction, removing circular wait chains between concurrent transfers.
+- **Two-phase idempotency** — a Redis state machine rejects in-flight duplicate requests with `409` and replays the cached response for 24h, so a client retry can never double-charge.
+- **BigInt-precision money** — no floats anywhere near a balance.
 
-**[pulseNews](https://github.com/Kutubuddin-Rasel/pulseNews)** — AI-personalized Android news reader with a 12-endpoint REST integration and an on-device NLP fallback (custom TextRank summarizer) for when the server AI-summary endpoint is rate-limited; AI-assisted development itself is kept in check by an enforced architecture ruleset and an automated permission-baseline check.
-`Kotlin` `Retrofit` `WorkManager`
-
-<sub>Architecture decisions and design-tradeoff writeups live in each repo's own README.</sub>
+**Status:** in development, not yet load-tested.
+**Concurrency benchmark:** `[pending — N concurrent overlapping-wallet transfers, p99 latency, deadlock count under load]`
 
 ---
 
-## Skills
+### [PulseNews](https://github.com/Kutubuddin-Rasel/PulseNews) — AI-personalized news platform
+`Android (Kotlin/Compose)` `NestJS` `Rust ingestion worker` — deployed on Azure
 
-![TypeScript](https://img.shields.io/badge/-TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![NestJS](https://img.shields.io/badge/-NestJS-E0234E?style=flat-square&logo=nestjs&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/-PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white)
-![Redis](https://img.shields.io/badge/-Redis-DC382D?style=flat-square&logo=redis&logoColor=white)
-![Node.js](https://img.shields.io/badge/-Node.js-339933?style=flat-square&logo=node.js&logoColor=white)
-![Next.js](https://img.shields.io/badge/-Next.js-000000?style=flat-square&logo=next.js&logoColor=white)
-![Kotlin](https://img.shields.io/badge/-Kotlin-7F52FF?style=flat-square&logo=kotlin&logoColor=white)
-![Docker](https://img.shields.io/badge/-Docker-2496ED?style=flat-square&logo=docker&logoColor=white)
+Three services, one hard constraint: the ranking backend and the embedding worker both had to run on a 1GB VM.
 
-<sub>Currently learning: Go, C#/.NET Core</sub>
+- Split the ONNX embedding pipeline into its own worker process specifically so the backend never has to load a 137MB model into its own memory budget.
+- Chose an INT8-quantized embedding model and a persistent `embed_service` HTTP endpoint — backend calls it over an SSH tunnel — instead of loading the model per request.
+- Composite ranking (embedding similarity + freshness decay + source quality + geo boost) with hashed A/B arm assignment for weight experiments.
+- Self-configured the Azure deployment end to end: systemd services, Nginx reverse proxy, Docker memory limits and V8 heap caps to survive on a 1GB box.
+
+**Status:** live at [pulsenewsbackend.me](https://pulsenewsbackend.me) — pre-release, no external traffic yet.
+**Note:** the Rust worker's implementation was AI-ported from a Node reference I wrote and specified — see [AI-Assisted Development](#ai-assisted-development). I'm not claiming Rust fluency from it; everything else above is mine.
+
+---
+
+### [Zenith](https://github.com/Kutubuddin-Rasel/ZENITH) — Solo project management platform
+`NestJS` `TypeORM` `PostgreSQL`
+
+Started as a university assignment, still running a year later as an ongoing systems-design sandbox — a place to build backend patterns I don't get to use in my day job yet.
+
+- **TOTP-based 2FA** — implemented and verified end-to-end. It's the one subsystem in this codebase I've fully tested and would defend without notes.
+- The rest of the backend is still being built and tested. I'm not listing what's in there beyond that until I can stand behind it the same way — this section grows as pieces get proven, not as pieces get written.
+
+**Status:** long-running, backend incomplete.
+
+---
+
+## AI-Assisted Development
+
+I use Claude as a pair programmer — mainly to sanity-check whether an approach is idiomatic or violates SOLID, to compare design options before committing to one, and to unblock me as a junior engineer without a senior on hand to ask.
+
+One specific case, disclosed because it matters: PulseNews's Rust ingestion worker started as logic I wrote and specified in Node, which I then had Claude port to Rust for the memory and performance profile a 1GB VM required. I designed the pipeline and made the architectural calls; I did not write that Rust myself and wouldn't want to be graded on Rust idiom from that file. Everything else here — the locking strategy in Kori, the deployment configs, the 2FA flow in Zenith — I wrote and can defend unaided.
 
 ---
 
 ## Background
 
-BSc in Computer Science, American International University-Bangladesh (2025) &nbsp;·&nbsp; Android Developer @ Kitalon Labs (2026–Present) &nbsp;·&nbsp; previously Full Stack Developer Intern @ Techmak Technology (2025) &nbsp;·&nbsp; Codeforces Specialist, 1448 rating ([Rk899](https://codeforces.com/profile/Rk899))
-
+**Experience:** Android Engineer @ Kitalon Labs (2026–present) · Full-Stack Developer Intern @ Techmak Technology (2025)
+**Education:** BSc Computer Science, American International University-Bangladesh — CGPA 3.89/4.00, Dean's Award for Academic Excellence
+**Competitive programming:** Codeforces Specialist, max rating 1448
