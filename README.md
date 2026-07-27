@@ -22,6 +22,7 @@ Currently building Android at Kitalon Labs · writing backend systems everywhere
 ## Projects
 
 ### [Kori](https://github.com/Kutubuddin-Rasel/Kori) — Mobile Financial Service backend
+![Status](https://img.shields.io/badge/status-in%20development-orange?style=flat-square)
 `NestJS` `PostgreSQL` `Prisma` `Redis`
 
 A from-scratch MFS backend (bKash/Nagad-style) built around one constraint: never corrupt a balance under concurrent load.
@@ -31,12 +32,13 @@ A from-scratch MFS backend (bKash/Nagad-style) built around one constraint: neve
 - **Two-phase idempotency** — a Redis state machine rejects in-flight duplicate requests with `409` and replays the cached response for 24h, so a client retry can never double-charge.
 - **BigInt-precision money** — no floats anywhere near a balance.
 
-**Status:** in development, not yet load-tested.
-**Concurrency benchmark:** `[pending — N concurrent overlapping-wallet transfers, p99 latency, deadlock count under load]`
+> [!NOTE]
+> Not yet load-tested. Concurrency benchmark pending: `N concurrent overlapping-wallet transfers, p99 latency, deadlock count under load`.
 
 ---
 
 ### [PulseNews](https://github.com/Kutubuddin-Rasel/PulseNews) — AI-personalized news platform
+![Status](https://img.shields.io/badge/status-live%20%7C%20pre--release-blue?style=flat-square)
 `Android (Kotlin/Compose)` `NestJS` `Rust ingestion worker` — deployed on Azure
 
 Three services, one hard constraint: the ranking backend and the embedding worker both had to run on a 1GB VM.
